@@ -1,30 +1,58 @@
 <script>
+	import { Router, Route, Link } from "svelte-routing";
+	import Home from "./pages/Home.svelte";
+	//import About from "./pages/About.svelte";
+	export let url = ""; //This property is necessary declare to avoid ignore the Router
 	export let name;
-</script>
+  </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+Hello {name}
+<header>
+
+    <h1>Random Definition Generator</h1>
+
+    <h2>from Urban Dictionary</h2>
+
+</header>
+
+<Router url="{url}">
+	<div>
+	   <Route path="/"><Home /></Route>
+	</div>
+</Router>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+	 
+	* {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
 	}
-
+	
+	header {
+	  width: 100%;
+	  background-color: black;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  text-align: center;
+	  font-family: Lora;
+	  font-style: normal;
+	  font-weight: bold;
+	  padding: 20px 0px;
+	}
+	
 	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
+	  font-size: 48px;
+	  line-height: 61px;
+	  text-align: center;
+	  color: #FFFFFF;
 	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	
+	h2{
+	  font-size: 24px;
+	  line-height: 31px;
+	  color: #EFFF00;
 	}
-</style>
+	
+	</style>

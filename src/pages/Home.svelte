@@ -1,6 +1,8 @@
 <script>
   import * as Yup from 'yup';
   import {Form, Message} from 'svelte-yup';
+  import { useNavigate } from "svelte-navigator";
+  import { useFocus } from "svelte-navigator";
 
   let fields = {
       username: "",
@@ -17,16 +19,22 @@
   });
 
   let submitted = false;
-    let isValid;
-    function formSubmit(){
-        submitted = true;
-        isValid = schema.isValidSync(fields);
-        if(isValid){
-            alert('Everything is validated!');
-        }
-    }
-</script>
+  let isValid;
+	const navigate = useNavigate();
+  const registerFocus = useFocus();
 
+  function formSubmit(){
+      submitted = true;
+      isValid = schema.isValidSync(fields);
+      if(isValid){
+        navigate('/generator')
+        //  
+        //console.log(fields)
+        alert('Everything is validated!');
+      }
+  }
+  
+</script>
 <div class="home-container">
     <div class="login-container">
       <Form class="form" {schema} {fields} submitHandler={formSubmit} {submitted}>
@@ -36,6 +44,7 @@
               name="username"
               type="text" 
               placeholder="Enter your username"
+              use:registerFocus
               bind:value={fields.username}
           />
           <span class="errorMessage"><Message name="username" /></span>
@@ -53,7 +62,6 @@
         <div class="btn-container">
           <button class="btn-submit">Login</button>
         </div>
-        
       </Form>
   </div>
 </div>

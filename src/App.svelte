@@ -1,12 +1,11 @@
 <script>
-	import { Router, Route, Link } from "svelte-routing";
+	//import { Router, Route, Link } from "svelte-routing";
+	import { Router, Route } from "svelte-navigator";
 	import Home from "./pages/Home.svelte";
 	//import About from "./pages/About.svelte";
 	export let url = ""; //This property is necessary declare to avoid ignore the Router
-	export let name;
   </script>
 
-Hello {name}
 <header>
 
     <h1>Random Definition Generator</h1>
@@ -14,12 +13,20 @@ Hello {name}
     <h2>from Urban Dictionary</h2>
 
 </header>
+<Router>
+	<Route path="/">
+		<Home />
+	</Route>
+	<!-- ... -->
+</Router>
 
+
+<!-- 
 <Router url="{url}">
 	<div>
 	   <Route path="/"><Home /></Route>
 	</div>
-</Router>
+</Router> -->
 
 <style>
 	 
